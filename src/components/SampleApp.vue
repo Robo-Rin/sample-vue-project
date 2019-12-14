@@ -5,21 +5,21 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from 'axios';
 
 export default {
   name: 'SampleApp',
-  data () {
+  data() {
     return {
-      data: []
-    }
+      data: [],
+    };
   },
-  mounted () {
+  mounted() {
     axios.get('http://www.json-generator.com/api/json/get/ckGeTpGfaW').then(response => {
-      console.log(response)
-    })
-  }
-}
+      console.log(response);
+    });
+  },
+};
 </script>
 
 <style scoped lang="scss">

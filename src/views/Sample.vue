@@ -5,12 +5,12 @@
 </template>
 
 <script>
-import SampleApp from '@/components/SampleApp.vue'
+import SampleApp from '@/components/SampleApp.vue';
 
 export default {
   name: 'sample',
   components: {
-    SampleApp
-  }
-}
+    SampleApp,
+  },
+};
 </script>
