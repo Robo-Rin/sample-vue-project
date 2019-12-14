@@ -5,6 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    data: [],
     numUsers: 10,
   },
   mutations: {
@@ -14,15 +15,27 @@ export default new Vuex.Store({
     REMOVE_USER(state) {
       state.numUsers--;
     },
+    LOAD_DATA(state, data) {
+      state.data = data;
+    },
   },
   actions: {
-    addUser({ commit }) {
-      commit('ADD_USER');
+    addUser({ commit, state }) {
+      if (state?.numUsers < state?.data?.length - 1) {
+        commit('ADD_USER');
+      } else {
+        alert('ERROR: There are no more users available to add!');
+      }
     },
-    removeUser({ commit }) {
-      commit('REMOVE_USER');
+    removeUser({ commit, state }) {
+      if (state?.numUsers > 0) {
+        commit('REMOVE_USER');
+      } else {
+        alert('ERROR: There are no more users left to remove!');
+      }
     },
-  },
-  modules: {
+    loadData({ commit }, data) {
+      commit('LOAD_DATA', data);
+    },
   },
 });

@@ -24,7 +24,7 @@
 
 <script>
 import axios from 'axios';
-import { mapState } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 import UserCard from './UserCard';
 
 export default {
@@ -32,29 +32,22 @@ export default {
   components: {
     UserCard,
   },
-  data() {
-    return {
-      data: [],
-    };
-  },
   mounted() {
-    axios.get('http://www.json-generator.com/api/json/get/ceGRNEkPci').then(response => {
-      this.data = response?.data;
-    });
+    if (!this.data?.length) {
+      axios.get('http://www.json-generator.com/api/json/get/ceGRNEkPci').then(response => {
+        const { data } = response || {};
+        this.loadData(data);
+      });
+    }
   },
   computed: {
-    ...mapState([ 'numUsers' ]),
+    ...mapState([ 'data', 'numUsers' ]),
     users() {
       return this.data?.slice(0, this.numUsers) || [];
     },
   },
   methods: {
-    addUser() {
-      this.$store.dispatch('addUser');
-    },
-    removeUser() {
-      this.$store.dispatch('removeUser');
-    },
+    ...mapActions([ 'addUser', 'removeUser', 'loadData' ]),
   },
 };
 </script>
