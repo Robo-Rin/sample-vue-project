@@ -2,6 +2,11 @@ import config from '../config.json';
 import axios from 'axios';
 
 export const getUserList = async () => {
-  const { data } = await axios.get(config.API_URL) || [];
-  return data;
+  try {
+    const { data } = await axios.get(config.API_URL) || [];
+    return data;
+  } catch (err) {
+    console.error(`Error fetching user list: ${err}`);
+    return [];
+  }
 };

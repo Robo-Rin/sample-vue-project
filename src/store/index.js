@@ -24,6 +24,7 @@ export default new Vuex.Store({
       if (state?.numUsers < state?.data?.length - 1) {
         commit('ADD_USER');
       } else {
+        // Alert popups are generally bad UX, but using for the sake of time
         alert('ERROR: There are no more users available to add!');
       }
     },
@@ -31,6 +32,7 @@ export default new Vuex.Store({
       if (state?.numUsers > 0) {
         commit('REMOVE_USER');
       } else {
+        // Alert popups are generally bad UX, but using for the sake of time
         alert('ERROR: There are no more users left to remove!');
       }
     },

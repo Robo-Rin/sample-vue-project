@@ -23,10 +23,13 @@ export default {
 
 <style lang='scss' scoped>
 .userCardPicture {
+  align-items: center;
   background-color: white;
   border-radius: 10px;
   border: 1px solid black;
+  display: flex;
   height: 96px;
+  justify-content: center;
   margin: 0 10px 10px 0;
   width: 96px;
 
