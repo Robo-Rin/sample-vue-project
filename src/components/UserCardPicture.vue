@@ -23,19 +23,19 @@ export default {
 
 <style lang='scss' scoped>
 .userCardPicture {
-  width: 96px;
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid black;
   height: 96px;
   margin: 0 10px 10px 0;
-  border: 1px solid black;
-  border-radius: 10px;
-  background-color: white;
+  width: 96px;
 
   img {
-    height: 100%;
-    max-width: 94px;
-    max-height: 94px;
     background-color: white;
     border-radius: 10px;
+    height: 100%;
+    max-height: 94px;
+    max-width: 94px;
   }
 }
 </style>

@@ -65,15 +65,15 @@ export default {
 
 <style lang='scss' scoped>
 .userCard {
-  margin: 20px;
-  width: 22vw;
-  max-height: 200px;
   background-color: white;
-  border: 3px solid cyan;
   border-radius: 10px;
+  border: 3px solid cyan;
   display: flex;
   flex-flow: column nowrap;
   flex: 0 1 auto;
+  margin: 20px;
+  max-height: 200px;
+  width: 22vw;
 
   &-top {
     display: flex;
@@ -81,8 +81,8 @@ export default {
     padding: 10px 10px 0 10px;
 
     &-details {
-      text-align: right;
       flex: 1 0 auto;
+      text-align: right;
     }
   }
 

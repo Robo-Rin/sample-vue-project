@@ -14,30 +14,24 @@
         {{ 'Remove User' }}
       </div>
     </div>
-    <div class="sampleApp-users">
-      <template v-for="user in users">
-        <UserCard :key="user._id" :user="user" />
-      </template>
-    </div>
+    <Users :users="users" />
   </div>
 </template>
 
 <script>
-import axios from 'axios';
 import { mapActions, mapState } from 'vuex';
-import UserCard from './UserCard';
+import { getUserList } from '@/api';
+import Users from './Users';
 
 export default {
   name: 'SampleApp',
   components: {
-    UserCard,
+    Users,
   },
-  mounted() {
+  async mounted() {
     if (!this.data?.length) {
-      axios.get('http://www.json-generator.com/api/json/get/ceGRNEkPci').then(response => {
-        const { data } = response || {};
-        this.loadData(data);
-      });
+      const data = await getUserList();
+      this.loadData(data);
     }
   },
   computed: {
@@ -110,15 +104,6 @@ export default {
         background-color: #ff0000;
       }
     }
-  }
-
-  &-users {
-    height: 95%;
-    width: 100%;
-    display: flex;
-    flex-flow: row wrap;
-    overflow-y: auto;
-    align-content: flex-start;
   }
 }
 </style>
