@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" :class="{ selected, shouldSelectDim, hovering, shouldHoverDim }">
     <div class="card-inner">
       <div class="card-header">
         <div class="card-header-icon">
@@ -67,6 +67,22 @@ export default {
         'Must be 18 or older*',
       ],
     },
+    selected: {
+      type: Boolean,
+      default: false,
+    },
+    shouldSelectDim: {
+      type: Boolean,
+      default: false,
+    },
+    hovering: {
+      type: Boolean,
+      default: false,
+    },
+    shouldHoverDim: {
+      type: Boolean,
+      default: false,
+    },
   },
 };
 </script>
@@ -78,6 +94,10 @@ export default {
   justify-content: stretch;
   align-items: center;
   margin-bottom: 1rem;
+  cursor: pointer;
+  color: black;
+  opacity: 1;
+  transition: color .5s, opacity 0.5s;
 
   &:first-child {
     padding-right: 0.9375rem;
@@ -90,6 +110,67 @@ export default {
   &-inner {
     border: 1px solid #85868c;
     max-width: 20.4788rem;
+    transition: border-color .5s;
+  }
+
+  &:hover, &.selected {
+    color: black;
+    opacity: 1;
+
+    .card-content-fee {
+      &-text {
+        color: #004183;
+      }
+    }
+  }
+
+  &:hover {
+    .card-inner {
+      border-color: #4dbdff;
+    }
+
+    .card-header {
+      color: #004183;
+      background: #fff linear-gradient(-180deg,rgba(255,255,255,0) 0%,rgba(17,120,206,.03) 100%);
+      border-color: #4dbdff;
+    }
+  }
+
+  &.selected {
+    .card-inner {
+      box-shadow: 0 0 15px -1px rgba(0,0,0,.5);
+      border-color: #1178ce;
+    }
+
+    .card-header {
+      color: white;
+      background: #1178ce;
+      border-color: #1178ce;
+    }
+  }
+
+  &.shouldHoverDim:not(.selected) {
+    opacity: 0.7;
+  }
+
+  &.shouldSelectDim:not(.hovering) {
+    color: #6d6d6d;
+
+    .card-inner {
+      border-color: #a9abb6;
+    }
+
+    .card-header {
+      color: #85868c;
+      background: #fafafa;
+      border-color: #a9abb6;
+    }
+
+    .card-content-fee {
+      &-text {
+        color: #6d6d6d;
+      }
+    }
   }
 
   &-header {
@@ -97,9 +178,11 @@ export default {
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
-    color: #004183;
     padding: 1.5rem;
     border-bottom: 1px solid #85868c;
+    color: #004183;
+    background: linear-gradient(-180deg,#fafafa 0%,#ededed 100%);
+    transition: background-color 0.5s, border-color 0.5s, color 0.5s;
 
     &-icon {
       display: flex;
@@ -109,6 +192,7 @@ export default {
     }
 
     &-title {
+      font-family: "Circular Medium", sans-serif;
       font-size: 1.25rem;
       line-height: 1.3;
     }
@@ -126,12 +210,16 @@ export default {
     }
 
     &-fee {
+      color: #6d6d6d;
+
       &-text {
         font-family: "Circular Bold", sans-serif;
         color: #175da7;
+        transition: color 0.5s;
       }
+
       &-subtext {
-        color: #6d6d6d;
+        font-size: 0.875rem;
       }
     }
 

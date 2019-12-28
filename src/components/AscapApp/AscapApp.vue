@@ -27,6 +27,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #000;
+  color: black;
 }
 </style>

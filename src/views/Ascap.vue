@@ -8,7 +8,7 @@
 import AscapApp from '@/components/AscapApp/AscapApp.vue';
 
 export default {
-  name: 'sample',
+  name: 'ascap',
   components: {
     AscapApp,
   },

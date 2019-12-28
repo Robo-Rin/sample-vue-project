@@ -4,7 +4,7 @@
     <div class="home-subheader">The purpose of this app is to demo my knowledge of Vue.js by compiling sample code, some of which was used for coding tasks</div>
     <ul class="home-overviews">
       <li>The first app <router-link to="/sample">Sample</router-link> demonstrates simple API interaction by fetching user information and generating user cards based on that information. It's constructed with the Strategy pattern and simple composition.</li>
-      <li>The second app <router-link to="/ascap">Ascap</router-link> demonstrates some UI and UX with the beginning of a membership interactive flow.</li>
+      <li>The second app <router-link to="/ascap">Ascap</router-link> demonstrates some UI and UX with the beginning of a membership interactive flow replicated from <a href="https://ome.ascap.com/" target="_blank" rel="noreferrer noopener">here</a>.</li>
     </ul>
   </div>
 </template>
