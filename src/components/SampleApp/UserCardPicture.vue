@@ -15,7 +15,7 @@ export default {
   },
   computed: {
     imagePath() {
-      return require(`../assets/fruit/${this.fruit}.png`);
+      return require(`@/assets/fruit/${this.fruit}.png`);
     },
   },
 };
