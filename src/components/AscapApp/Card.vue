@@ -1,5 +1,5 @@
 <template>
-  <div class="card" :class="{ selected, shouldSelectDim, hovering, shouldHoverDim }">
+  <div class="card" :class="{ selected, shouldSelectDim, hovering, shouldHoverDim, error }">
     <div class="card-inner">
       <div class="card-header">
         <div class="card-header-icon">
@@ -83,6 +83,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    error: {
+      type: Boolean,
+      default: false,
+    },
   },
 };
 </script>
@@ -121,6 +125,16 @@ export default {
       &-text {
         color: #004183;
       }
+    }
+  }
+
+  &.error {
+    .card-inner {
+      border-color: #cd3533;
+    }
+
+    .card-header {
+      border-color: #cd3533;
     }
   }
 
